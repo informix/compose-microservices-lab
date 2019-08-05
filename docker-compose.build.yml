@@ -1,0 +1,75 @@
+version: '3'
+services:
+  informix-server:
+      image: "ibmcom/informix-developer-database"
+      container_name: "informix"
+      hostname: "informix"
+      environment:
+          LICENSE: 'accept'
+          SIZE:    'small'
+          INIT_FILE: timeseries_generic.sql
+      ports:
+         - 27018:27018
+      volumes: 
+         - /home1/setupvol:/opt/ibm/config
+  data-generator:
+      image: "pythongen"
+      depends_on: 
+          - message-broker
+          - data-reader 
+      container_name: "datagen"
+      hostname: "datagen"
+      working_dir: /usr/src/myapp
+      volumes: 
+         - /home1/setupvol:/usr/src/myapp
+      environment:
+          BROKER: 'msgbroker'
+          BROKER_PORT: 1883
+          BROKER_TOPIC: 'datagen/datagen1'
+      entrypoint: python datagen.py
+  data-reader:
+      build: data-reader
+      image: "pythonreader"
+      depends_on: 
+          - message-broker
+      container_name: "datareader"
+      hostname: "datareader"
+      environment:
+          BROKER: 'msgbroker'
+          BROKER_PORT: 1883
+          BROKER_TOPIC: 'datagen/datagen1'
+          REST_ENDPOINT: 'http://informix:27018/db1/tab1'
+  message-broker:
+      image: "eclipse-mosquitto"
+      depends_on: 
+          - informix-server 
+      container_name: "msgbroker"
+      hostname: "msgbroker"
+#   grafana-ui:
+#       build: grafana-informix
+#       image: "grafana"
+#       depends_on: 
+#           - informix-server 
+#       ports:
+#          - 3000:3000
+#       container_name: "grafana"
+#       hostname: "grafana"
+  grafana-ui:
+      image: "grafana:informix"
+      depends_on: 
+          - informix-server 
+      ports:
+         - 3000:3000
+      container_name: "grafana"
+      hostname: "grafana"
+
+#   nodered:
+#       image: "nodered:informix"
+#       depends_on: 
+#           - message-broker 
+#       ports:
+#          - 1880:1880
+#       container_name: "nodered"
+#       hostname: "nodered"
+
+
