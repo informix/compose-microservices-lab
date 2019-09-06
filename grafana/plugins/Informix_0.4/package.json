@@ -1,0 +1,26 @@
+{
+  "name": "informix-grafana",
+  "version": "1.0.0",
+  "description": "Informix plug-in for Grafana 5.x",
+  "main": "Gruntfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/OpenInformix/informix-grafana.git"
+  },
+  "author": "Brian Hughes",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/OpenInformix/informix-grafana/issues"
+  },
+  "homepage": "https://github.com/OpenInformix/informix-grafana#readme",
+  "dependencies": {
+    "grunt": "^1.0.4",
+    "grunt-contrib-clean": "^2.0.0",
+    "grunt-contrib-copy": "^1.0.0",
+    "grunt-execute": "^0.2.2",
+    "load-grunt-tasks": "^5.1.0"
+  }
+}

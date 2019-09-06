@@ -1,0 +1,7 @@
+apiVersion: 1
+
+datasources:
+   - name: TSDB 
+     type: Informix_0.3 
+     access: proxy 
+     url: http://informix:27018/tsdb

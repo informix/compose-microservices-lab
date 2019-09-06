@@ -1,0 +1,32 @@
+{
+  "name": "Informix",
+  "id": "openinformix-informix-datasource",
+  "type": "datasource",
+
+  "metrics": true,
+  "annotations": false,
+
+  "info": {
+    "description": "Informix Datasource",
+    "author": {
+      "name": "Alexander Koerner",
+      "url": "http://www.twitter.com/AlexKoeMuc"
+    },
+    "logos": {
+      "small": "img/InformixLogo.png",
+      "large": "img/InformixLogo.png"
+    },
+    "links": [
+      {"name": "GitHub", "url": "https://github.com/OpenInformix/informix-grafana"},
+      {"name": "MIT License", "url": "https://github.com/OpenInformix/informix-grafana/blob/master/LICENSE"}
+    ],
+    "version": "0.4",
+    "updated": "2019-08-08",
+    "keywords" : ["timeseries", "rdms", "database", "informix"]
+  },
+
+  "dependencies": {
+    "grafanaVersion": "3.x.x",
+    "plugins": [ ]
+  }
+}

@@ -1,0 +1,120 @@
+<query-editor-row query-ctrl="ctrl" class="generic-datasource-query-row" has-text-edit-mode="true">
+  <div class="gf-form-inline">
+    <div class="gf-form max-width-8">
+      <label class="gf-form-label query-keyword width-15">Choose a query type:</label>
+      <select class="gf-form-input width-15" ng-model="ctrl.target.type"
+        ng-options="f as f for f in ['table-as-timeseries', 'timeseries', 'simple-timeseries', 'raw-query']">
+      </select>
+
+    </div>
+  </div>
+  <hr>
+  <div ng-if="ctrl.target.type == 'timeseries'">
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Timeseries Table Name</label>
+        <input type="text" ng-model="ctrl.target.tableName" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Timeseries column</label>
+        <input type="text" ng-model="ctrl.target.timeseriesColumn" class="gf-form-input gf-form-input width-24"
+          value="">
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Filter column</label>
+        <input type="text" ng-model="ctrl.target.filterColumn" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Filter value</label>
+        <input type="text" ng-model="ctrl.target.filterValue" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+
+  </div>
+
+  <div ng-if="ctrl.target.type == 'simple-timeseries'">
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Timeseries Table Name</label>
+        <input type="text" ng-model="ctrl.target.tableName" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Sensor/Metric ID</label>
+        <input type="text" ng-model="ctrl.target.filterValue" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="ctrl.target.type == 'table-as-timeseries'">
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Table Name</label>
+        <input type="text" ng-model="ctrl.target.tableName" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Date/time column</label>
+        <input type="text" ng-model="ctrl.target.dateColumn" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Numerical column</label>
+        <input type="text" ng-model="ctrl.target.numberColumn" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Filter column</label>
+        <input type="text" ng-model="ctrl.target.filterColumn" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+    <div class="gf-form-inline">
+      <div class="gf-form">
+        <label class="gf-form-label query-keyword width-15">Filter value</label>
+        <input type="text" ng-model="ctrl.target.filterValue" class="gf-form-input gf-form-input width-24" value="">
+      </div>
+    </div>
+  </div>
+
+  <div ng-if="ctrl.target.type == 'raw-query'">
+    <div class="gf-form">
+      <textarea class="gf-form-input" rows="5" ng-model="ctrl.target.sql" spellcheck="false" />
+      </div>
+    </div>
+    <div class="gf-form gf-form--grow">
+      <div class="gf-form-label gf-form-label--grow"></div>
+    </div>
+  </div>
+
+  <div ng-if="ctrl.target.type == 'table'">
+    <div class="gf-form">
+      <textarea class="gf-form-input" rows="5" ng-model="ctrl.target.sql" spellcheck="false" />
+    </div>
+    <div class="gf-form gf-form--grow">
+      <div class="gf-form-label gf-form-label--grow"></div>
+    </div>
+  </div>
+    
+  
+  <div class="gf-form">
+    <button class="btn navbar-button" ng-click="ctrl.onChangeInternal()">Update</button>
+  </div>
+
+  <div class="gf-form" ng-show="ctrl.showLastQuerySQL">
+    <pre class="gf-form-pre">{{ctrl.lastQueryMeta.sql}}</pre>
+  </div>
+
+  <div class="gf-form" ng-show="ctrl.lastQueryError">
+    <pre class="gf-form-pre alert alert-error">{{ctrl.lastQueryError}}</pre>
+  </div>
+</query-editor-row>
