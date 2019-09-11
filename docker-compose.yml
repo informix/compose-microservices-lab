@@ -48,19 +48,8 @@ services:
          - informix-server 
       container_name: "msgbroker"
       hostname: "msgbroker"
-#   grafana-ui:
-#       build: grafana-informix
-#       image: "grafana:informix"
-#       depends_on: 
-#          - informix-server 
-#       ports:
-#          - 3000:3000
-#       container_name: "grafana"
-#       hostname: "grafana"
-#       volumes: 
-#         - ${PWD}/grafana-informix/plugins:/var/lib/grafana/plugins
   grafana-ui:
-      image: "grafana:grafana"
+      image: "grafana/grafana"
       depends_on: 
          - informix-server 
       ports:
