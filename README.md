@@ -6,7 +6,7 @@
 ## Steps
 
 1.  Clone the github repository.  git clone http://github.com/informix/compose-microservices-lab
-2.  cd to project directory and run chmod 777 -R *
+2.  cd to project directory and run chmod -R 777  *
 3.  Run __docker-compose up__ 
 4.  After a few minutes you should see the informix server up and running.  The WL running.  and data begins to get inserted.
 5.  See grafana-informix/Grafana Setup.docx  for information on importing a graph for visualizing the informix data.  A default dashboard and graph are created.
