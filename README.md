@@ -1,6 +1,6 @@
-## docker-compose-microservices-lab
+# compose-microservices-lab
 
-### Default compose file:
+## Default compose file:
     docker-compose.yml
 
 ## Steps
