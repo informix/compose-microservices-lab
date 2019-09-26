@@ -6,6 +6,9 @@
 ## Full doc for running the lab
 1.  See __doc__ folder
 
+## Full Documentation
+1.  See __doc__ folder.
+
 
 ## QuickStart Steps
 
