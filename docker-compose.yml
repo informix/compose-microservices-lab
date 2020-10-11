@@ -26,7 +26,8 @@ services:
           BROKER: 'msgbroker'
           BROKER_PORT: 1883
           BROKER_TOPIC: 'datagen/datagen1'
-      entrypoint: python datagen.py     
+      #entrypoint: python datagen.py     
+      entrypoint:  ./datagen_entry.sh     
   data-reader:
       image: "python:3.6-alpine"
       depends_on: 
